@@ -10,6 +10,7 @@ class Page {
     private $title;
     private $meta_description;
     private $meta_keywords;
+    private $content;
     private $date_created;
     private $creator;
     private $parent;
@@ -24,6 +25,7 @@ class Page {
 
         // Set defaults for the page.
         $this->meta_keywords    = '';
+        $this->content          = '';
         $this->date_created     = date();
         $this->parent           = null;
         $this->order            = 0;
