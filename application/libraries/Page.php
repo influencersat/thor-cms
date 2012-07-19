@@ -27,7 +27,7 @@ class Page {
         $this->description      = '';
         $this->keywords         = '';
         $this->content          = '';
-        $this->date_created     = date();
+        $this->date_created     = time();
         $this->parent           = null;
         $this->order            = 0;
 
