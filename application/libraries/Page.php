@@ -218,4 +218,47 @@ class Page {
             $this->creator = $creator;
         }
     }
+
+    /**
+     * Get the parent of the current page.
+     * @return Page - Parent page of the current one
+     */
+    public function getParent() {
+        $ci =& $this->loadDependencies();
+
+        if ((is_int($this->parent) || is_numeric($this->parent)) && $this->parent > 0) {
+            $this->parent = $ci->Page_Model->get($this->parent);
+        }
+
+        return ($this->parent instanceof Page) ? $this->parent : NULL;
+    }
+
+    /**
+     * Set a new parent for the current page.
+     * @param Page $parent - New paraent page
+     */
+    public function setParent($parent) {
+        $ci =& $this->loadDependencies();
+
+        if (((is_int($parent) || is_numeric($parent)) && $parent > 0) ||
+                ($parent instanceof Page)) {
+            $this->parent = $parent;
+        }
+    }
+
+    /**
+     * Get the order to display the page in a navigation.
+     * @return int - Order to display the page in a navigation
+     */
+    public function getOrder() {
+        return intval($this->order);
+    }
+
+    /**
+     * Set the order to display the page in a navigation.
+     * @param int $order - New order for the page
+     */
+    public function setOrder($order) {
+        $this->order = intval($order);
+    }
 }
