@@ -18,17 +18,12 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-switch ($_SERVER['HTTP_HOST']) {
-	case 'davidthor.me':
-	case 'www.davidthor.me':
-		define('ENVIRONMENT', 'development');
-		break;
-	default:
-		define('ENVIRONMENT', 'production');
-		break;
+if (is_dir('application/config/development')) {
+    define('ENVIRONMENT', 'development');
+} else {
+	define('ENVIRONMENT', 'production');
 }
 
-	define('ENVIRONMENT', 'development');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

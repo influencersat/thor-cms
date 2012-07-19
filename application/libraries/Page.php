@@ -101,4 +101,37 @@ class Page {
     public function setTitle($title) {
         $this->title = $title;
     }
+
+    /**
+     * Get the description of the page.
+     * @return String - Description of the page
+     */
+    public function getDescription() {
+        return $this->description;
+    }
+
+    /**
+     * Set a new description for the page.
+     * @param String $description - New description for the page
+     */
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
+    /**
+     * Get the keywords of the page as a comma separated list.
+     * @return String - Comma-separated list of keywords for the page.
+     */
+    public function getKeywords() {
+        return $this->keywords;
+    }
+
+    /**
+     * Overwrite the list of keywords for the page with a new, comma-separated
+     * list provided.
+     * @param String $keywords - New comma-separated list of keywords
+     */
+    public function setKeywords($keywords) {
+        $this->keywords = $keywords;
+    }
 }
