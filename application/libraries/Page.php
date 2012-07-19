@@ -21,7 +21,7 @@ class Page {
      * @param array $data - Data to populate the page with
      */
     public function __construct($data = array()) {
-        $this->loadDependencies();    
+        $ci =& $this->loadDependencies();    
 
         // Set defaults for the page.
         $this->description      = '';
@@ -38,12 +38,16 @@ class Page {
                 case "parent":
                     if ($value instanceof Page) {
                         $this->parent = $value;
+                    } else if ((is_int($value) || is_numeric($value)) && $value > 0) {
+                        // TODO - Check if ID is valid.
                     }
                     
                     break;
                 case "creator":
                     if ($value instanceof User) {
                         $this->creator = $value;
+                    } else if ((is_int($value) || is_numeric($value)) && $value > 0) {
+                        // TODO - Check if ID is valid.
                     }
 
                     break;
@@ -55,11 +59,15 @@ class Page {
     }
 
     /**
-     * Load the dependencies required by this library.
+     * Load anything that this library may depend on for proper functionality,
+     * and return the active CodeIgniter instance.
+     * @return CI_Controller - Active CodeIgniter instance
      */
-    private function loadDependencies() {
+    private function &loadDependencies() {
         $ci =& get_instance();
         $ci->load->library('User');
+        $ci->load->model(array('User_Model', 'Page_Model'));
+        return $ci;
     }
 
     /**
@@ -76,5 +84,21 @@ class Page {
      */
     public function setId($id) {
         $this->id = $id;
+    }
+
+    /**
+     * Get the title of the current page.
+     * @return String - Title of the page
+     */
+    public function getTitle() {
+        return $this->title;
+    }
+
+    /**
+     * Set a new title for the current page.
+     * @param String $title - New title for the page
+     */
+    public function setTitle($title) {
+        $this->title = $title;
     }
 }

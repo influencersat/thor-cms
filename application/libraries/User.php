@@ -41,11 +41,15 @@ class User {
     }
 
     /**
-     * Load any libraries that this class may depend on for proper functionality.
+     * Load any libraries that the library may depend on for proper functionality
+     * and return the current CodeIgniter instance.
+     * @return CI_Controller - Active CodeIgniter instance
      */
-    private function loadDependencies() {
+    private function &loadDependencies() {
         $ci =& get_instance();
         $ci->load->model('Image_Model');
+        $ci->load->library('Image');
+        return $ci;
     }
 
     /**
@@ -185,9 +189,10 @@ class User {
      * @return Image - Profile picture of the user
      */
     public function getProfilePicture() {
-        if ((is_int($this->picture) || is_numeric($this->picture) && $this->picture > 0) {
-            $ci =& get_instance();
-            $ci->load->model('Image_Model');
+        $ci =& $this->loadDependencies();
+
+        // Check if the picture needs to be converted.
+        if ((is_int($this->picture) || is_numeric($this->picture)) && $this->picture > 0) {
             $this->picture = $ci->Image_Model->get($this->picture);
         }
 
@@ -204,10 +209,12 @@ class User {
      * @param Image $picture - New Image for the users profile picture
      */
     public function setProfilePicture($picture) {
+        $ci =& $this->loadDependencies();
+
         if ($picture instanceof Image) {
             $this->picture = $picture;
         } else if ((is_int($picture) || is_numeric($picture)) && $this->picture > 0) {
-            $ci =& get_instance();
+            $this->picture = $ci->Image_Model->get($picture);
         }
     }
 }
