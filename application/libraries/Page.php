@@ -152,4 +152,70 @@ class Page {
     public function setKeywords($keywords) {
         $this->keywords = $keywords;
     }
+
+    /**
+     * Get the HTML content of the page.
+     * @return String - HTML content of the page
+     */
+    public function getContent() {
+        return $this->content;
+    }
+
+    /**
+     * Set new HTML content for the page.
+     * @param String $content - New HTML content for the page
+     */
+    public function setContent($content) {
+        $this->content = $content;
+    }
+
+    /**
+     * Get the date that the page was created. The output date string will
+     * be formatted according to the input parameter. Valid parameters include
+     * anything accepted by the PHP date() function.
+     * @param String $format - Format string for the PHP date() function
+     * @return String - Formatted date that the page was created.
+     */
+    public function getDateCreated($format = 'F j, Y') {
+        return date($format, $this->date_created);
+    }
+
+    /**
+     * Set a new creation date for the page. Valid inputs include anything
+     * accepted by the PHP strtotime() function.
+     * @param String $date - New creation date of the page
+     */
+    public function setDateCreated($date) {
+        $this->date_created = strtotime($date);
+    }
+
+    /**
+     * Get the user who created the page.
+     * @return User - User who created the page.
+     */
+    public function getCreator() {
+        $ci =& $this->loadDependencies();
+
+        if ((is_int($this->creator) || is_numeric($this->creator)) && $this->creator > 0) {
+            $this->creator = $ci->User_Model->get($this->creator);
+        }
+
+        if ($this->creator instanceof User) {
+            return $this->creator;
+        } else {
+            throw new Exception("Failed to convert the creator to a User object.");
+        }
+    }
+
+    /**
+     * Set a new creator for the page.
+     * @param User $creator - New creator of the page
+     */
+    public function setCreator($creator) {
+        $ci =& $this->loadDependencies();
+
+        if ($creator instanceof User || ((is_int($creator) || is_numeric($creator) && $creator > 0))) {
+            $this->creator = $creator;
+        }
+    }
 }
