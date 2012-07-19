@@ -53,6 +53,22 @@ class User {
     }
 
     /**
+     * Convert the object to a save format for database storage. This includes
+     * converting library objects to their appropriate reference IDs.
+     */
+    public function minimize() {
+        $ci =& $this->getDependencies();
+
+        if ($this->picture instanceof Image) {
+            $this->picture = $this->picture->getId();
+        }
+
+        if (is_array($this->social)) {
+            $this->social = json_encode($this->social);
+        }
+    }
+
+    /**
      * Get the database reference ID of the User.
      * @return int - Database reference ID.
      */
@@ -215,6 +231,31 @@ class User {
             $this->picture = $picture;
         } else if ((is_int($picture) || is_numeric($picture)) && $this->picture > 0) {
             $this->picture = $ci->Image_Model->get($picture);
+        }
+    }
+
+    /**
+     * Get an array of the user's social media indentifiers.
+     * @return array - Associative array of social media identifiers
+     */
+    public function getSocial() {
+        if (!is_array($this->social)) {
+            $this->social = json_decode($this->social);
+        }
+
+        return $this->social;
+    }
+
+    /**
+     * Update the array of social media identifiers for the user by replacing
+     * it with a new array.
+     * @param array $social - New social media identifiers
+     */
+    public function setSocial($social) {
+        if (is_array($social)) {
+            $this->social = $social;
+        } else {
+            throw new Exception("Invalid Parameter: setSocial() expects an associative array.");
         }
     }
 }

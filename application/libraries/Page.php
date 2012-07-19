@@ -71,6 +71,24 @@ class Page {
     }
 
     /**
+     * Convert the object to a save format for database storage. This includes
+     * converting library objects to their appropriate reference IDs.
+     */
+    public function minimize() {
+        $ci =& $this->loadDependencies();
+
+        // Check to see if the creator is an instance of the User library.
+        if ($this->creator instanceof User) {
+            $this->creator = $this->creator->getId();
+        }
+
+        // Check to see if the parent is an instance of the Page library.
+        if ($this->parent instanceof Page) {
+            $this->parent = $this->parent->getId();
+        }
+    }
+
+    /**
      * Get the database reference ID of the page.
      * @return int - Database reference ID.
      */
