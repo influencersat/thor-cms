@@ -8,8 +8,8 @@
 class Page {
     private $id;
     private $title;
-    private $meta_description;
-    private $meta_keywords;
+    private $description;
+    private $keywords;
     private $content;
     private $date_created;
     private $creator;
@@ -24,7 +24,8 @@ class Page {
         $this->loadDependencies();    
 
         // Set defaults for the page.
-        $this->meta_keywords    = '';
+        $this->description      = '';
+        $this->keywords         = '';
         $this->content          = '';
         $this->date_created     = date();
         $this->parent           = null;

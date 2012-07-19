@@ -1,4 +1,10 @@
 <?php
+/**
+ * Library representing a User object.
+ *
+ * @author David Thor
+ * @version 1.0
+ */
 class User {
     private $id;
     private $first_name;
