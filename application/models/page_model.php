@@ -43,7 +43,8 @@ class Page_Model extends CI_Model {
     private function getWithId($id) {
         $this->db->where('id', $id);
         $query = $this->db->get($this->DB_TABLE);
-        return $query->row(0, 'Page');
+        $data = $query->row(0);
+        return new Page($data);
     }
 
     /**
@@ -55,7 +56,8 @@ class Page_Model extends CI_Model {
     private function getWithData($data) {
         $this->db->where($data);
         $query = $this->db->get($this->DB_TABLE);
-        return $query->row(0, 'Page');
+        $array = $query->row(0);
+        return new Page($array);
     }
 
     /**

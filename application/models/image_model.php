@@ -43,7 +43,8 @@ class Image_Model extends CI_Model {
     private function getWithId($id) {
         $this->db->where('id', $id);
         $query = $this->db->get($this->DB_TABLE);
-        return $query->row(0, 'Image');
+        $array = $query->row(0);
+        return new Image($array);
     }
 
     /**

@@ -10,7 +10,8 @@ class Static_Page extends CI_Controller {
     }
 
 	public function index() {
-		$this->load->view('welcome_message');
+        $page = $this->Page_Model->get(1);
+		$this->load->view('home', array('page' => $page));
 	}
 }
 
