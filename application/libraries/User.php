@@ -254,8 +254,14 @@ class User {
     public function setSocial($social) {
         if (is_array($social)) {
             $this->social = $social;
-        } else {
-            throw new Exception("Invalid Parameter: setSocial() expects an associative array.");
         }
+    }
+
+    /**
+     * Get the users personal website
+     * @return String - Website URL
+     */
+    public function getWebsite() {
+        return $this->website;
     }
 }
