@@ -1158,9 +1158,10 @@ class CI_DB_active_record extends CI_DB_driver {
 	 *
 	 * @param	string	the table to insert data into
 	 * @param	array	an associative array of insert values
+     * @param   bool    toggle for updating on duplicate keys
 	 * @return	object
 	 */
-	function insert($table = '', $set = NULL)
+	function insert($table = '', $set = NULL, $onDuplicateKeyUpdate = FALSE)
 	{
 		if ( ! is_null($set))
 		{
@@ -1191,6 +1192,16 @@ class CI_DB_active_record extends CI_DB_driver {
 		}
 
 		$sql = $this->_insert($this->_protect_identifiers($table, TRUE, NULL, FALSE), array_keys($this->ar_set), array_values($this->ar_set));
+
+        // START: On Duplicate Key Update
+        if ($onDuplicateKeyUpdate) {
+            $sql .= ' ON DUPLICATE KEY UPDATE';
+            foreach ($this->ar_set as $key => $value) {
+                $sql .= " {$key}={$value},";
+            }
+            $sql = substr($sql, 0, -1);
+        }
+        // END: On Duplicate Key Update
 
 		$this->_reset_write();
 		return $this->query($sql);
