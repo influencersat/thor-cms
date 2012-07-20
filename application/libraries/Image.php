@@ -2,6 +2,7 @@
 class Image {
     private $id;
     private $name;
+    private $description;
     private $date_created;
     private $owner;
     private $original_file;
@@ -67,6 +68,22 @@ class Image {
      */
     public function setName($name) {
         $this->name = $name;
+    }
+
+    /**
+     * Get the description of the Image.
+     * @return String - Description of the image
+     */
+    public function getDescription() {
+        return $this->description;
+    }
+
+    /**
+     * Set a new description for the image.
+     * @param String $description - New description for the image
+     */
+    public function setDescription($description) {
+        $this->description = $description;
     }
 
     /**
