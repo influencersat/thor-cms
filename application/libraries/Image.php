@@ -1,5 +1,13 @@
 <?php
-class Image {
+require_once 'Library.php';
+
+/**
+ * Library representing an image stored in the database.
+ *
+ * @author David Thor
+ * @version 1.0
+ */
+class Image extends Library {
     private $id;
     private $name;
     private $description;

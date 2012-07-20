@@ -1,11 +1,13 @@
 <?php
+require_once 'Library.php';
+
 /**
  * Stores the contents and information relating to a page in the database.
  *
  * @author David Thor
  * @version 1.0
  */
-class Page {
+class Page extends Library {
     private $id;
     private $title;
     private $description;

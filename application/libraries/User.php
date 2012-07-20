@@ -1,11 +1,13 @@
 <?php
+require_once 'Library.php';
+
 /**
  * Library representing a User object.
  *
  * @author David Thor
  * @version 1.0
  */
-class User {
+class User extends Library {
     private $id;
     private $first_name;
     private $last_name;
