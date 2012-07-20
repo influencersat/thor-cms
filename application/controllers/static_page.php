@@ -11,9 +11,20 @@ class Static_Page extends CI_Controller {
 
 	public function index() {
         $page = $this->Page_Model->get(1);
-		$this->load->view('home', array('page' => $page));
+		$this->load->view(DEFAULT_THEME . 'home', array('page' => $page));
 	}
+
+    /**
+     * Load the page associated with the input permalink.
+     * @param String $permalink - Permalink to match a page with.
+     */
+    public function view($permalink = '') {
+        if (empty($permalink)) {
+            // TODO - Get the administrative preference for the homepage.
+        } else {
+            $title = strtolower(str_replace("-", " ", $permalink));
+            $page = $this->Page_Model->get(array('lower(title)' => $title));
+        }
+    }
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

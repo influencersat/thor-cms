@@ -15,7 +15,7 @@ class Page_Model extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->load->database();
-        $this->load->library('Page');
+        $this->load->library(array('Page', 'User'));
     }
 
     /**
@@ -100,6 +100,7 @@ class Page_Model extends CI_Model {
      */
     public function insert($page) {
         if ($page instanceof Page) {
+            $page->minimize();
             $this->db->insert($this->DB_TABLE, $page, true);
         } else {
             throw new Exception("Failed Page insert: Provided data is not an " . 
