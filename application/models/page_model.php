@@ -101,7 +101,7 @@ class Page_Model extends CI_Model {
     public function insert($page) {
         if ($page instanceof Page) {
             $page->minimize();
-            $this->db->insert($this->DB_TABLE, $page, true);
+            $this->db->insert($this->DB_TABLE, $page->getVars(), true);
         } else {
             throw new Exception("Failed Page insert: Provided data is not an " . 
                                 "instance of a Page object.");

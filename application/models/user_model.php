@@ -101,7 +101,7 @@ class User_Model extends CI_Model {
     public function insert($user) {
         if ($page instanceof User) {
             $user->minimize();
-            $this->db->insert($this->DB_TABLE, $user, true);
+            $this->db->insert($this->DB_TABLE, $user->getVars(), true);
         } else {
             throw new Exception("Failed User insert: Provided data is not an " . 
                                 "instance of a User object.");

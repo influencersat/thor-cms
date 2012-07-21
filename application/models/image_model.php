@@ -99,7 +99,8 @@ class Image_Model extends CI_Model {
      */
     public function insert($image) {
         if ($image instanceof Image) {
-            $this->db->insert($this->DB_TABLE, $image, true);
+            $image->minimize();
+            $this->db->insert($this->DB_TABLE, $image->getVars(), true);
         } else {
             throw new Exception("Failed Image insert: Provided data is not an " . 
                                 "instance of a Image object.");

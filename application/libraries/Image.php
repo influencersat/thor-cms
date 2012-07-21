@@ -47,6 +47,18 @@ class Image extends Library {
     }
 
     /**
+     * Convert variables corresponding to library objects to their appropriate
+     * database reference IDs.
+     */
+    public function minimize() {
+        $ci =& $this->loadDependencies();
+
+        if ($this->owner instanceof User) {
+            $this->owner = $this->owner->getId();
+        }
+    }
+
+    /**
      * Get the reference ID of the Image.
      * @return int - Database reference ID
      */
