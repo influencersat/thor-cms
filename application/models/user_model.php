@@ -99,7 +99,7 @@ class User_Model extends CI_Model {
      * @param User $page - New User object to add to the database
      */
     public function insert($user) {
-        if ($page instanceof User) {
+        if ($user instanceof User) {
             $user->minimize();
             $this->db->insert($this->DB_TABLE, $user->getVars(), true);
         } else {

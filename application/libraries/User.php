@@ -8,17 +8,17 @@ require_once 'Library.php';
  * @version 1.0
  */
 class User extends Library {
-    private $id;
-    private $first_name;
-    private $last_name;
-    private $email;
-    private $password;
-    private $last_visit;
-    private $registration_date;
-    private $bio;
-    private $picture;
-    private $social;
-    private $website;
+    protected $id;
+    protected $first_name;
+    protected $last_name;
+    protected $email;
+    protected $password;
+    protected $last_visit;
+    protected $registration_date;
+    protected $bio;
+    protected $picture;
+    protected $social;
+    protected $website;
 
     /**
      * Initialize the User object with the input data and load the database.
@@ -32,7 +32,7 @@ class User extends Library {
         $this->last_visit           = time();
         $this->registration_date    = time();
         $this->bio                  = '';
-        $this->picture              = NULL;
+        $this->picture              = 0;
         $this->social               = array();
         $this->website              = '';
         
@@ -59,7 +59,7 @@ class User extends Library {
      * converting library objects to their appropriate reference IDs.
      */
     public function minimize() {
-        $ci =& $this->getDependencies();
+        $ci =& $this->loadDependencies();
 
         if ($this->picture instanceof Image) {
             $this->picture = $this->picture->getId();
@@ -162,7 +162,7 @@ class User extends Library {
      * @param String $date - New date to set.
      */
     public function setLastVisitDate($date) {
-        $this->date = strtotime($date);
+        $this->last_visit = strtotime($date);
     }
 
     /**
@@ -183,7 +183,7 @@ class User extends Library {
      * @param String $date - New date to set.
      */
     public function setRegistrationDate($date) {
-        $this->date = strtotime($date);
+        $this->registration_date = strtotime($date);
     }
 
     /**
