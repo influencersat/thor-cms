@@ -66,14 +66,5 @@
 </head>
 <body>
 
-<table cellpadding="0" cellspacing="5px" border="1">
-    <?php foreach ($timezones as $key => $value) { ?>
-    <tr>
-        <td><?php echo $key; ?></td>
-        <td><?php echo $value; ?></td>
-    </tr>
-    <?php } ?>
-</table>
-
 </body>
 </html>

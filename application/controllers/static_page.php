@@ -6,12 +6,10 @@ class Static_Page extends CI_Controller {
      */
     public function __construct() {
         parent::__construct();
-        $this->load->model('Timezone_Model');
     }
 
 	public function index() {
-        $timezones = $this->Timezone_Model->getUTCList();
-        $this->load->view('default_theme/home', array('timezones' => $timezones));
+
 	}
 
     /**
