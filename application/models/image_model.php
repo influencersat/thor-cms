@@ -7,7 +7,7 @@
  * @version 1.0
  */
 class Image_Model extends CI_Model {
-    private $DB_TABLE = 'Images';
+    const DB_TABLE = 'Images';
 
     /**
      * Initialize the model and load the database.
@@ -42,7 +42,7 @@ class Image_Model extends CI_Model {
      */
     private function getWithId($id) {
         $this->db->where('id', $id);
-        $query = $this->db->get($this->DB_TABLE);
+        $query = $this->db->get(DB_TABLE);
         $array = $query->row(0);
         return new Image($array);
     }
@@ -55,8 +55,9 @@ class Image_Model extends CI_Model {
      */
     private function getWithData($data) {
         $this->db->where($data);
-        $query = $this->db->get($this->DB_TABLE);
-        return $query->row(0, 'Image');
+        $query = $this->db->get(DB_TABLE);
+        $array = $query->row(0, 'Image');
+        return new Image($array);
     }
 
     /**
@@ -78,7 +79,7 @@ class Image_Model extends CI_Model {
      */
     private function deleteWithId($id) {
         $this->db->where('id', $id);
-        $this->db->delete($this->DB_TABLE);
+        $this->db->delete(DB_TABLE);
     }
 
     /**
@@ -89,7 +90,7 @@ class Image_Model extends CI_Model {
      */
     private function deleteWithData($data) {
         $this->db->where($data);
-        $this->db->delete($this->DB_TABLE);
+        $this->db->delete(DB_TABLE);
     }
 
     /**
@@ -100,7 +101,7 @@ class Image_Model extends CI_Model {
     public function insert($image) {
         if ($image instanceof Image) {
             $image->minimize();
-            $this->db->insert($this->DB_TABLE, $image->getVars(), true);
+            $this->db->insert(DB_TABLE, $image->getVars(), true);
         } else {
             throw new Exception("Failed Image insert: Provided data is not an " . 
                                 "instance of a Image object.");

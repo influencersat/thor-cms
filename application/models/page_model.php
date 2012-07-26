@@ -7,7 +7,7 @@
  * @version 1.0
  */
 class Page_Model extends CI_Model {
-    private $DB_TABLE = 'Pages';
+    const DB_TABLE = 'Pages';
 
     /**
      * Initialize the model and load the database.
@@ -44,7 +44,7 @@ class Page_Model extends CI_Model {
      */
     private function getWithId($id) {
         $this->db->where('id', $id);
-        $query = $this->db->get($this->DB_TABLE);
+        $query = $this->db->get(DB_TABLE);
         $data = $query->row(0);
         return new Page($data);
     }
@@ -57,7 +57,7 @@ class Page_Model extends CI_Model {
     private function getWithPermalink($permalink) {
         $title = strtolower(str_replace("-", " ", $permalink));
         $this->db->where('lower(title)', $title);
-        $query = $this->db->get($this->DB_TABLE);
+        $query = $this->db->get(DB_TABLE);
         $data = $query->row(0);
         return new Page($data);
     }
@@ -70,7 +70,7 @@ class Page_Model extends CI_Model {
      */
     private function getWithData($data) {
         $this->db->where($data);
-        $query = $this->db->get($this->DB_TABLE);
+        $query = $this->db->get(DB_TABLE);
         $array = $query->row(0);
         return new Page($array);
     }
@@ -94,7 +94,7 @@ class Page_Model extends CI_Model {
      */
     private function deleteWithId($id) {
         $this->db->where('id', $id);
-        $this->db->delete($this->DB_TABLE);
+        $this->db->delete(DB_TABLE);
     }
 
     /**
@@ -105,7 +105,7 @@ class Page_Model extends CI_Model {
      */
     private function deleteWithData($data) {
         $this->db->where($data);
-        $this->db->delete($this->DB_TABLE);
+        $this->db->delete(DB_TABLE);
     }
 
     /**
@@ -116,7 +116,7 @@ class Page_Model extends CI_Model {
     public function insert($page) {
         if ($page instanceof Page) {
             $page->minimize();
-            $this->db->insert($this->DB_TABLE, $page->getVars(), true);
+            $this->db->insert(DB_TABLE, $page->getVars(), true);
         } else {
             throw new Exception("Failed Page insert: Provided data is not an " . 
                                 "instance of a Page object.");
