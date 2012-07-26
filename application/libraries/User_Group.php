@@ -13,8 +13,8 @@ class User_Group extends Library {
     protected $description;
     protected $permissions;
 
-    public const MANAGE_PAGES = 1;
-    public const MANAGE_USERS = 2;
+    const MANAGE_PAGES = 1;
+    const MANAGE_USERS = 2;
 
     /**
      * Populate the group with the provided data and load any
