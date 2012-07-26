@@ -1,15 +1,29 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Controller managing a call to any static page.
+ *
+ * @author David Thor
+ * @version 1.0
+ */
 class Static_Page extends CI_Controller {
+
     /**
-     * Load the necessary libraries and models for the controller.
+     * Initialize the controller and load any dependencies.
      */
     public function __construct() {
         parent::__construct();
+        $this->load->model('Page_Model');
     }
 
-	public function index() {
-
+	/**
+     * Perform the index action of the page.
+     */
+    public function index() {
+        $page = $this->Page_Model->get(1);
+        $this->load->view('default_theme/header', array('page' => $page));
+        $this->load->view('default_theme/main', array('page' => $page));
+        $this->load->view('default_theme/footer', array('page' => $page));
 	}
 
     /**
@@ -18,10 +32,14 @@ class Static_Page extends CI_Controller {
      */
     public function view($permalink = '') {
         if (empty($permalink)) {
-            // TODO - Get the administrative preference for the homepage.
+            show_404();
         } else {
-            $title = strtolower(str_replace("-", " ", $permalink));
-            $page = $this->Page_Model->get(array('lower(title)' => $title));
+            print_r(array($permalink));
+            $page = $this->Page_Model->get($permalink);
+            
+            $this->load->view('default_theme/header', array('page' => $page));
+            $this->load->view('default_theme/main', array('page' => $page));
+            $this->load->view('default_theme/footer', array('page' => $page));
         }
     }
 }

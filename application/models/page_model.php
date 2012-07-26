@@ -27,6 +27,8 @@ class Page_Model extends CI_Model {
     public function get($data) {
         if ((is_int($data) || is_numeric($data)) && $data > 0) {
             return $this->getWithId($data);
+        } else if (is_string($data)) {
+            return $this->getWithPermalink($data);
         } else if (is_array($data)) {
             return $this->getWithData($data);
         } else {
@@ -42,6 +44,19 @@ class Page_Model extends CI_Model {
      */
     private function getWithId($id) {
         $this->db->where('id', $id);
+        $query = $this->db->get($this->DB_TABLE);
+        $data = $query->row(0);
+        return new Page($data);
+    }
+
+    /**
+     * Get the Page object who's title matches the provided permalink.
+     * @param String $permalink - Permalink to match against the title
+     * @return Page
+     */
+    private function getWithPermalink($permalink) {
+        $title = strtolower(str_replace("-", " ", $permalink));
+        $this->db->where('lower(title)', $title);
         $query = $this->db->get($this->DB_TABLE);
         $data = $query->row(0);
         return new Page($data);
