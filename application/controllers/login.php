@@ -6,7 +6,6 @@
  * @version 1.0
  */
 class Login extends Controller {
-    @Override
     public function __construct() {
         
     }

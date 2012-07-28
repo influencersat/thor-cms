@@ -42,7 +42,7 @@ class User_Model extends CI_Model {
      */
     private function getWithId($id) {
         $this->db->where('id', $id);
-        $query = $this->db->get(DB_TABLE);
+        $query = $this->db->get(self::DB_TABLE);
         $data = $query->row(0);
         return new User($data);
     }
@@ -55,7 +55,7 @@ class User_Model extends CI_Model {
      */
     private function getWithData($data) {
         $this->db->where($data);
-        $query = $this->db->get(DB_TABLE);
+        $query = $this->db->get(self::DB_TABLE);
         $array = $query->row(0);
         return new User($array);
     }
@@ -79,7 +79,7 @@ class User_Model extends CI_Model {
      */
     private function deleteWithId($id) {
         $this->db->where('id', $id);
-        $this->db->delete(DB_TABLE);
+        $this->db->delete(self::DB_TABLE);
     }
 
     /**
@@ -90,7 +90,7 @@ class User_Model extends CI_Model {
      */
     private function deleteWithData($data) {
         $this->db->where($data);
-        $this->db->delete(DB_TABLE);
+        $this->db->delete(self::DB_TABLE);
     }
 
     /**
@@ -101,7 +101,7 @@ class User_Model extends CI_Model {
     public function insert($user) {
         if ($user instanceof User) {
             $user->minimize();
-            $this->db->insert(DB_TABLE, $user->getVars(), true);
+            $this->db->insert(self::DB_TABLE, $user->getVars(), true);
         } else {
             throw new Exception("Failed User insert: Provided data is not an " . 
                                 "instance of a User object.");
