@@ -44,7 +44,7 @@ class Page_Model extends CI_Model {
      */
     private function getWithId($id) {
         $this->db->where('id', $id);
-        $query = $this->db->get(DB_TABLE);
+        $query = $this->db->get(self::DB_TABLE);
         $data = $query->row(0);
         return new Page($data);
     }
@@ -57,7 +57,7 @@ class Page_Model extends CI_Model {
     private function getWithPermalink($permalink) {
         $title = strtolower(str_replace("-", " ", $permalink));
         $this->db->where('lower(title)', $title);
-        $query = $this->db->get(DB_TABLE);
+        $query = $this->db->get(self::DB_TABLE);
         $data = $query->row(0);
         return new Page($data);
     }
@@ -70,7 +70,7 @@ class Page_Model extends CI_Model {
      */
     private function getWithData($data) {
         $this->db->where($data);
-        $query = $this->db->get(DB_TABLE);
+        $query = $this->db->get(self::DB_TABLE);
         $array = $query->row(0);
         return new Page($array);
     }
@@ -94,7 +94,7 @@ class Page_Model extends CI_Model {
      */
     private function deleteWithId($id) {
         $this->db->where('id', $id);
-        $this->db->delete(DB_TABLE);
+        $this->db->delete(self::DB_TABLE);
     }
 
     /**
@@ -105,7 +105,7 @@ class Page_Model extends CI_Model {
      */
     private function deleteWithData($data) {
         $this->db->where($data);
-        $this->db->delete(DB_TABLE);
+        $this->db->delete(self::DB_TABLE);
     }
 
     /**
@@ -116,7 +116,7 @@ class Page_Model extends CI_Model {
     public function insert($page) {
         if ($page instanceof Page) {
             $page->minimize();
-            $this->db->insert(DB_TABLE, $page->getVars(), true);
+            $this->db->insert(self::DB_TABLE, $page->getVars(), true);
         } else {
             throw new Exception("Failed Page insert: Provided data is not an " . 
                                 "instance of a Page object.");

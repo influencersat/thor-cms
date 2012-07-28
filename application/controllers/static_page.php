@@ -6,7 +6,7 @@
  * @author David Thor
  * @version 1.0
  */
-class Static_Page extends CI_Controller {
+class Static_Page extends Controller {
 
     /**
      * Initialize the controller and load any dependencies.
