@@ -1,0 +1,26 @@
+/*
+Name: Default
+Description: The default theme for Thor's CMS
+Author: David Thor
+Version: 1.0
+ */
+html, body, div, table, tr, td, img, a {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+html, body {
+	min-height: 100%;
+}
+
+input[type=text] {
+	background: #dbdbdb; /* Old browsers */
+	background: -moz-linear-gradient(top,  #dbdbdb 0%, #f2f2f2 17%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dbdbdb), color-stop(17%,#f2f2f2), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #dbdbdb 0%,#f2f2f2 17%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #dbdbdb 0%,#f2f2f2 17%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #dbdbdb 0%,#f2f2f2 17%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #dbdbdb 0%,#f2f2f2 17%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}

@@ -3,5 +3,6 @@
 <head>
     <title><?php echo $page->getTitle(); ?></title>
     <meta name="description" value="<?php echo $page->getDescription(); ?>" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>

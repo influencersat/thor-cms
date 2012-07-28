@@ -6,7 +6,26 @@
  * @version 1.0
  */
 class Login extends Controller {
+	
+	/**
+	 * Constructor for the controller.
+	 */
     public function __construct() {
         
     }
+    
+    /**
+     * Perform the index action for the controller.
+     */
+    public function index() {
+    	
+    }
+    
+    /**
+     * 
+     */
+    public function logout() {
+    	self::$user = null;
+    }
+    
 }
