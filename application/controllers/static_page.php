@@ -40,5 +40,13 @@ class Static_Page extends T_Controller {
             $this->load->view('default_theme/footer', array('page' => $page));
         }
     }
+    
+    /**
+     * 
+     */
+    public function getHeader() {
+  		$page = $this->Page_Model->get(1);
+  		$this->load->view('default_theme/header', array('page' => $page));
+    }
 }
 
