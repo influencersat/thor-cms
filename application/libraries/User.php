@@ -50,7 +50,7 @@ class User extends Library {
     private function &loadDependencies() {
         $ci =& get_instance();
         $ci->load->model('Image_Model');
-        $ci->load->library('Image');
+        $ci->load->library('image');
         return $ci;
     }
 
