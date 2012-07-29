@@ -21,9 +21,7 @@ class Static_Page extends T_Controller {
      */
     public function index() {
         $page = $this->Page_Model->get(1);
-        $this->load->view('default_theme/header', array('page' => $page));
         $this->load->view('default_theme/main', array('page' => $page));
-        $this->load->view('default_theme/footer', array('page' => $page));
 	}
 
     /**

@@ -3,7 +3,7 @@ Name: Default
 Description: The default theme for Thor's CMS
 Author: David Thor
 Version: 1.0
- */
+*/
 html, body, div, table, tr, td, img, a {
 	margin: 0;
 	padding: 0;
@@ -14,7 +14,8 @@ html, body {
 	min-height: 100%;
 }
 
-input[type=text], input[type=password] {
+input[type=text], 
+input[type=password] {
 	background: #dbdbdb; /* Old browsers */
 	background: -moz-linear-gradient(top,  #dbdbdb 0%, #f2f2f2 17%, #ffffff 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dbdbdb), color-stop(17%,#f2f2f2), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
