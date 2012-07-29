@@ -14,7 +14,7 @@ html, body {
 	min-height: 100%;
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
 	background: #dbdbdb; /* Old browsers */
 	background: -moz-linear-gradient(top,  #dbdbdb 0%, #f2f2f2 17%, #ffffff 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dbdbdb), color-stop(17%,#f2f2f2), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
@@ -23,4 +23,11 @@ input[type=text] {
 	background: -ms-linear-gradient(top,  #dbdbdb 0%,#f2f2f2 17%,#ffffff 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #dbdbdb 0%,#f2f2f2 17%,#ffffff 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+
+/* Main Content */
+.container {
+	width: 300px;
+	margin: 0 auto;
 }

@@ -6,7 +6,7 @@
  * @version 1.0
  */
 class T_Controller extends CI_Controller {
-    protected static $user;
+    public static $user;
 
     /**
      * Create the controller instance.
