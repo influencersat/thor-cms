@@ -6,7 +6,7 @@
  * @author David Thor
  * @version 1.0
  */
-class Static_Page extends Controller {
+class Static_Page extends T_Controller {
 
     /**
      * Initialize the controller and load any dependencies.

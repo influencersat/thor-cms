@@ -5,7 +5,7 @@
  * @author David Thor
  * @version 1.0
  */
-class Controller extends CI_Controller {
+class T_Controller extends CI_Controller {
     protected static $user;
 
     /**

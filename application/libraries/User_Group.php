@@ -30,15 +30,6 @@ class User_Group extends Library {
     }
 
     /**
-     * Load any libraries that this class depends on to function
-     * @return CI_Controller
-     */
-    public function &loadDependencies() {
-        $ci =& get_instance();
-        return $ci;
-    }
-
-    /**
      * Minimize the group variables to database friendly values.
      */
     public function minimize() {

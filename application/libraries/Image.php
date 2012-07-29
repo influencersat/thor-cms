@@ -42,7 +42,6 @@ class Image extends Library {
     public function &loadDependencies() {
         $ci =& get_instance();
         $ci->load->model('User_Model');
-        $ci->load->library('User');
         return $ci;
     }
 

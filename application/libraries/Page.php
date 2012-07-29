@@ -67,7 +67,6 @@ class Page extends Library {
      */
     private function &loadDependencies() {
         $ci =& get_instance();
-        $ci->load->library('User');
         $ci->load->model(array('User_Model', 'Page_Model'));
         return $ci;
     }

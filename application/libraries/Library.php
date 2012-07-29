@@ -13,4 +13,14 @@ class Library {
     public function getVars() {
         return get_object_vars($this);
     }
+    
+    /**
+     * Load any dependencies that the library needs to function and return the
+     * CodeIgniter instance they were loaded into.
+     * @return CI_Controller
+     */
+    public function &loadDependencies() {
+    	$ci =& get_instance();
+    	return $ci;
+    }
 }

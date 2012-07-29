@@ -5,7 +5,7 @@
  * @author David Thor
  * @version 1.0
  */
-class Login extends Controller {
+class Login extends T_Controller {
 	
 	/**
 	 * Constructor for the controller.
