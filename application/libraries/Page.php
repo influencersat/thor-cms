@@ -65,7 +65,7 @@ class Page extends Library {
      * and return the active CodeIgniter instance.
      * @return CI_Controller - Active CodeIgniter instance
      */
-    private function &loadDependencies() {
+    protected function &loadDependencies() {
         $ci =& get_instance();
         $ci->load->model(array('User_Model', 'Page_Model'));
         return $ci;

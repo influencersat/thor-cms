@@ -47,7 +47,7 @@ class User extends Library {
      * and return the current CodeIgniter instance.
      * @return CI_Controller - Active CodeIgniter instance
      */
-    private function &loadDependencies() {
+    protected function &loadDependencies() {
         $ci =& get_instance();
         $ci->load->model('Image_Model');
         return $ci;

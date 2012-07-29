@@ -19,7 +19,7 @@ class Library {
      * CodeIgniter instance they were loaded into.
      * @return CI_Controller
      */
-    public function &loadDependencies() {
+    protected function &loadDependencies() {
     	$ci =& get_instance();
     	return $ci;
     }
